@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     @IBAction func player1minus5(_ sender: Any) {
         player1num -= 5;
         player1life.text = "Life Total: \(player1num)"
-        if (player1num <= 5) {
+        if (player1num <= 0) {
             gameActivity.text = "Player 1 LOSES!"
         }
     }
