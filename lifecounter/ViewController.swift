@@ -55,7 +55,6 @@ class ViewController: UIViewController {
     func addPlayer() {
         currPlayers += 1
         var xCoord = 250
-//            var yCoord = 250 * currRow
         if currPlayers > 2 && currPlayers % 2 != 0 {
             currRow += 1;
         }
@@ -80,7 +79,8 @@ class ViewController: UIViewController {
         let inputField = UITextField()
         inputField.tag = currPlayers
         inputField.text = "5"
-        inputField.backgroundColor = .lightGray
+        inputField.backgroundColor = .black
+        inputField.textColor = .white
         inputField.font = UIFont.systemFont(ofSize: 30)
         inputField.keyboardType = .numberPad
         inputField.textAlignment = .center
@@ -98,6 +98,7 @@ class ViewController: UIViewController {
         plusButton.setTitle("+", for: .normal)
         plusButton.tag = currPlayers
         plusButton.backgroundColor = .systemTeal
+        plusButton.tintColor = .white
 //            plusButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         plusButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         plusButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -105,6 +106,7 @@ class ViewController: UIViewController {
         let minusButton = UIButton(type: .roundedRect)
         minusButton.setTitle("-", for: .normal)
         minusButton.backgroundColor = .systemTeal
+        minusButton.tintColor = .white
 //            minusButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         minusButton.tag = currPlayers
         minusButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
@@ -133,17 +135,12 @@ class ViewController: UIViewController {
         if sender.titleLabel?.text == "+" {
             addPlayerButton.isEnabled = false;
             addPlayerButton.backgroundColor = .lightGray
-            print("+")
-            print(sender.tag)
             lifeCounters[sender.tag] = lifeCounters[sender.tag] + lifeCounterVal[sender.tag]
             labelRef[sender.tag].text = "Life Counter: \(lifeCounters[sender.tag])"
-            print(lifeCounters)
             history += "Player \(sender.tag) gained \(lifeCounterVal[sender.tag]) HP \n"
         } else if sender.titleLabel?.text == "-" {
             addPlayerButton.isEnabled = false;
             addPlayerButton.backgroundColor = .lightGray
-            print("-")
-            print(sender.tag)
             lifeCounters[sender.tag] = lifeCounters[sender.tag] - lifeCounterVal[sender.tag]
             labelRef[sender.tag].text = "Life Counter: \(lifeCounters[sender.tag])"
             history += "Player \(sender.tag) lost \(lifeCounterVal[sender.tag]) HP \n"
@@ -154,7 +151,6 @@ class ViewController: UIViewController {
                 loseLabel.font = UIFont.boldSystemFont(ofSize: 30)
                 loseLabel.frame = CGRect(x: 400, y: 1200, width: 400, height: 50)
                 self.view.addSubview(loseLabel)
-                print("lost")
             }
         }
     }
@@ -166,7 +162,6 @@ class ViewController: UIViewController {
             num = numUnwrapped
         }
         lifeCounterVal[sender.tag] = num;
-        print(lifeCounterVal);
     }
 }
 
