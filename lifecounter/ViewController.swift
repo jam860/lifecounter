@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var currRow : Int = 1;
     var loseLabel : UILabel = UILabel()
     let addPlayerButton = UIButton()
+    var history : String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,24 @@ class ViewController: UIViewController {
         addPlayerButton.addTarget(self, action: #selector(addPlayerToScreen), for: .touchUpInside)
         
         self.view.addSubview(addPlayerButton);
-        for _ in 1...4 {
+        for _ in 1...2 {
             addPlayer()
         }
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "SVCSegue":
+//          let source = segue.source as! ViewController
+          let destination = segue.destination as! ViewController2
+          //destination.incomingText = source.txtData.text!
+          // or
+          destination.setIncomingText(incoming: history)
+        default:
+          NSLog("Unknown segue identifier -- " + segue.identifier!)
+        }
+      }
     
     func addPlayer() {
         currPlayers += 1
@@ -124,6 +138,7 @@ class ViewController: UIViewController {
             lifeCounters[sender.tag] = lifeCounters[sender.tag] + lifeCounterVal[sender.tag]
             labelRef[sender.tag].text = "Life Counter: \(lifeCounters[sender.tag])"
             print(lifeCounters)
+            history += "Player \(sender.tag) gained \(lifeCounterVal[sender.tag]) HP \n"
         } else if sender.titleLabel?.text == "-" {
             addPlayerButton.isEnabled = false;
             addPlayerButton.backgroundColor = .lightGray
@@ -131,6 +146,7 @@ class ViewController: UIViewController {
             print(sender.tag)
             lifeCounters[sender.tag] = lifeCounters[sender.tag] - lifeCounterVal[sender.tag]
             labelRef[sender.tag].text = "Life Counter: \(lifeCounters[sender.tag])"
+            history += "Player \(sender.tag) lost \(lifeCounterVal[sender.tag]) HP \n"
             if lifeCounters[sender.tag] <= 0 {
                 addPlayerButton.isEnabled = true;
                 addPlayerButton.backgroundColor = .systemBlue
@@ -152,61 +168,5 @@ class ViewController: UIViewController {
         lifeCounterVal[sender.tag] = num;
         print(lifeCounterVal);
     }
-    
-//    @IBAction func player1plus(_ sender: Any) {
-//        player1num += 1;
-//        player1life.text = "Life Total: \(player1num)"
-//    }
-//    
-//    
-//    @IBAction func player1plus5(_ sender: Any) {
-//        player1num += 5;
-//        player1life.text = "Life Total: \(player1num)"
-//    }
-//    
-//  
-//    @IBAction func player1minus(_ sender: Any) {
-//        player1num -= 1;
-//        player1life.text = "Life Total: \(player1num)"
-//        if (player1num <= 0) {
-//            gameActivity.text = "Player 1 LOSES!"
-//        }
-//    }
-//    
-//    @IBAction func player1minus5(_ sender: Any) {
-//        player1num -= 5;
-//        player1life.text = "Life Total: \(player1num)"
-//        if (player1num <= 0) {
-//            gameActivity.text = "Player 1 LOSES!"
-//        }
-//    }
-//    
-//    @IBAction func player2plus(_ sender: Any) {
-//        player2num += 1;
-//        player2life.text = "Life Total: \(player2num)"
-//    }
-//    
-//    @IBAction func player2plus5(_ sender: Any) {
-//        player2num += 5;
-//        player2life.text = "Life Total: \(player2num)"
-//    }
-//    
-//    @IBAction func player2minus(_ sender: Any) {
-//        player2num -= 1;
-//        player2life.text = "Life Total: \(player2num)"
-//        
-//        if (player2num <= 0) {
-//            gameActivity.text = "Player 2 LOSES!"
-//        }
-//    }
-//    
-//    @IBAction func player2minus5(_ sender: Any) {
-//        player2num -= 5;
-//        player2life.text = "Life Total: \(player2num)"
-//        
-//        if (player2num <= 0) {
-//            gameActivity.text = "Player 2 LOSES!"
-//        }
-//    }
 }
 

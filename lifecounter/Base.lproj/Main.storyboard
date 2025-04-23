@@ -23,6 +23,17 @@
                                 <color key="textColor" systemColor="systemIndigoColor"/>
                                 <color key="highlightedColor" name="AccentColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAn-FG-6WB">
+                                <rect key="frame" x="786" y="70" width="163" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="View History">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="oZn-h9-He5" kind="presentation" identifier="SVCSegue" id="o5Y-6C-n6v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -34,34 +45,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110.14492753623189" y="-4.0178571428571423"/>
+            <point key="canvasLocation" x="109.88372093023256" y="-4.3604651162790695"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller2-->
         <scene sceneID="7gf-tu-cI7">
             <objects>
-                <viewController id="oZn-h9-He5" sceneMemberID="viewController">
+                <viewController id="oZn-h9-He5" customClass="ViewController2" customModule="lifecounter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9B7-dS-qfo">
-                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q4-1u-SKT">
-                                <rect key="frame" x="447" y="56" width="138" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q4-1u-SKT">
+                                <rect key="frame" x="221" y="20" width="138" height="52"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W8" family="Hiragino Sans" pointSize="32"/>
                                 <color key="textColor" systemColor="systemIndigoColor"/>
                                 <color key="highlightedColor" name="AccentColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-fB-fUt">
+                                <rect key="frame" x="440" y="80" width="88" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Go Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="oZn-h9-He5" eventType="touchUpInside" id="SAr-z3-1Cs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No history yet!" lineBreakMode="wordWrap" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyX-zB-3gP">
+                                <rect key="frame" x="48" y="80" width="111" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemIndigoColor"/>
+                                <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QhR-tH-r7j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="CyX-zB-3gP" firstAttribute="top" secondItem="9q4-1u-SKT" secondAttribute="bottom" constant="8" id="7Bh-s5-bSe"/>
                             <constraint firstItem="9q4-1u-SKT" firstAttribute="centerX" secondItem="9B7-dS-qfo" secondAttribute="centerX" id="Pd5-K4-h47"/>
-                            <constraint firstItem="9q4-1u-SKT" firstAttribute="top" secondItem="QhR-tH-r7j" secondAttribute="top" constant="32" id="mQN-fa-Pg2"/>
+                            <constraint firstItem="9q4-1u-SKT" firstAttribute="top" secondItem="QhR-tH-r7j" secondAttribute="top" constant="20" id="mQN-fa-Pg2"/>
+                            <constraint firstItem="CyX-zB-3gP" firstAttribute="leading" secondItem="QhR-tH-r7j" secondAttribute="leading" constant="48" id="zru-cj-Ive"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="history" destination="CyX-zB-3gP" id="1Yd-k9-Rae"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRY-W0-3Di" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779" y="-4"/>
+            <point key="canvasLocation" x="778.48837209302326" y="-4.3604651162790695"/>
         </scene>
     </scenes>
     <resources>
