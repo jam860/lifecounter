@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         inputField.font = UIFont.systemFont(ofSize: 30)
         inputField.keyboardType = .numberPad
         inputField.textAlignment = .center
-        inputField.addTarget(self, action: #selector(lifeCounterChange), for: .editingDidEndOnExit)
+        inputField.addTarget(self, action: #selector(lifeCounterChange), for: .editingChanged)
         
         let button = UIButton(type: .roundedRect)
         button.setTitle("5", for: .normal)
