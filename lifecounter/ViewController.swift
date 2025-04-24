@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         addPlayerButton.addTarget(self, action: #selector(addPlayerToScreen), for: .touchUpInside)
         
         self.view.addSubview(addPlayerButton);
-        for _ in 1...2 {
+        for _ in 1...4 {
             addPlayer()
         }
 
